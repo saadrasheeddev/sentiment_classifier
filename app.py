@@ -5,6 +5,7 @@ from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 
 st.title("Sentiment Classifier")
 @st.cache_resource(show_spinner=True)
+
 def load_model_tokenizer():
     peft_model_id = "lora-flan-t5-large-sentiment"
     config = PeftConfig.from_pretrained(peft_model_id)
@@ -38,6 +39,19 @@ prompt = """
         Human: The SR Watch has some good features, but there are also some drawbacks. The design is modern, but the battery life could be better. Overall, it's an okay product.
         Assistant: Neutral
     """
+
+# while (True):
+
+#     review_input = input("Enter review to be classified: (type *exit* to quit)\n")
+
+#     if review_input.lower() == "exit":
+#         break
+
+#     review_input += prompt + "Human: " + review_input + ".\n Assistant: "
+
+#     classification = inference(model, tokenizer, review_input)
+
+#     print(classification)
 
 input_ = st.text_input("Human", key="input_field")
 
